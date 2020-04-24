@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Levels IT/Level TestBed 1 IT.unity
+- path: Assets/UD_Level/LevelTestUD.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

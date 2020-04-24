@@ -13,7 +13,7 @@ public class WeaponInspector : Editor
 	static List<CoupleOfInts> ComponentsData;
 
 	readonly GUIContent lvlsNameContent = new GUIContent("Weapon upgrade lvls");
-	readonly GUIContent isResetOnBtnUpNameContent = new GUIContent("Reset on Button Up");
+	readonly GUIContent isResetOnBtnUpNameContent = new GUIContent("Reset delay on Btn Up");
 	readonly GUIContent numOfLevelsContent = new GUIContent("Number of lvls");
 	readonly GUIContent numOfGunsContent = new GUIContent("Guns at this lvl");
 
@@ -81,14 +81,20 @@ public class WeaponInspector : Editor
 
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("type"));
 
-		if ((int)tgtObject.type < (int)Weapons.LaserA) //display only for Bullet weapons
-		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("isResetOnBtnUp"), isResetOnBtnUpNameContent);
-		}
+		//if ((int)tgtObject.type < (int)Weapons.Weapon6) //display only for Bullet weapons
+		//{
+		//	EditorGUILayout.PropertyField(serializedObject.FindProperty("isResetOnBtnUp"), isResetOnBtnUpNameContent);
+		//}
 
 		SerializedProperty lvlListProp = serializedObject.FindProperty("lvls");
-		//EditorGUILayout.PropertyField(lvlListProp, lvlsNameContent, false);
+		
+		EditorGUI.BeginChangeCheck();
 		EditorGUILayout.PropertyField(lvlListProp.FindPropertyRelative("Array.size"), numOfLevelsContent);
+		if (EditorGUI.EndChangeCheck())
+		{
+			serializedObject.ApplyModifiedProperties();
+		}
+
 		for (int i = 0; i < lvlListProp.arraySize; i++)
 		{
 			DisplayHorizontalLine();
@@ -103,8 +109,14 @@ public class WeaponInspector : Editor
 			{
 				//Affichage array 'guns' of the WeaponLevelData property (sans afficher son nom
 				SerializedProperty gunsProp = lvlProp.FindPropertyRelative("guns");
-				//EditorGUILayout.PropertyField(gunsProp, false);
+				
+				EditorGUI.BeginChangeCheck();
 				EditorGUILayout.PropertyField(gunsProp.FindPropertyRelative("Array.size"), numOfGunsContent);
+				if (EditorGUI.EndChangeCheck())
+				{
+					serializedObject.ApplyModifiedProperties();
+				}
+
 				for (int j = 0; j < gunsProp.arraySize; j++)
 				{
 					SerializedProperty gProp = gunsProp.GetArrayElementAtIndex(j);
@@ -114,13 +126,15 @@ public class WeaponInspector : Editor
 					if (gProp.isExpanded)
 					{
 						EditorGUILayout.PropertyField(gProp.FindPropertyRelative("cannon"));
+						EditorGUILayout.PropertyField(gProp.FindPropertyRelative("type"));
 						EditorGUILayout.PropertyField(gProp.FindPropertyRelative("initialDelay"));
 						EditorGUILayout.PropertyField(gProp.FindPropertyRelative("fireDuration"));
 
-						//Display bullet or laser prefab field according to weapon type
-						if ((int)tgtObject.type < (int)Weapons.LaserA)
+						//Display bullet or laser prefab field according to gun type
+						if (tgtObject.lvls[i].guns[j].type == GunData.GunTypes.Bullet)
 						{
 							EditorGUILayout.PropertyField(gProp.FindPropertyRelative("fireDelay"));
+							EditorGUILayout.PropertyField(gProp.FindPropertyRelative("mustResetDelayOnBtnUp"), isResetOnBtnUpNameContent);
 							EditorGUILayout.PropertyField(gProp.FindPropertyRelative("bulletPrefab"));
 						}
 						else

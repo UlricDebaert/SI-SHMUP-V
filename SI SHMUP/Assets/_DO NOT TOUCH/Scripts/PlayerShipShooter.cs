@@ -29,7 +29,7 @@ public class PlayerShipShooter : MonoBehaviour
 		currLvl = 0;
 		currGuns = currWeapon.lvls[currLvl].guns;
 
-		ResetFireTimes(false);
+		InitFireTimes();
 	}
 
 
@@ -76,7 +76,7 @@ public class PlayerShipShooter : MonoBehaviour
 		int intVal = (int)pkpType;
 
 		//Si le pickup ramassé n'est pas une weapon, on l'ignore.
-		if (intVal > (int)Weapons.LaserC)
+		if (intVal > (int)Weapons.Weapon8)
 			return;
 
 		Weapons correspondingWeaponType = (Weapons)intVal;
@@ -119,19 +119,7 @@ public class PlayerShipShooter : MonoBehaviour
 		{
 			if (!isFiring)
 			{
-				if (currWeapon.isResetOnBtnUp)
-				{
-					ResetFireTimes(false);
-				}
-				else if ((int)currWeapon.type >= (int)Weapons.LaserA)
-				{
-					ResetFireTimes(false);
-					//FixFireTimesForNonResettableLaser();
-				}
-				else
-				{
-					ResetFireTimes(true);
-				}
+				ResetFireTimes();
 
 				StartFiring();
 			}
@@ -168,7 +156,7 @@ public class PlayerShipShooter : MonoBehaviour
 					//...we check if it's time to fire a bullet – or to start a laser
 					if (Time.time >= currGuns[i].NextFireTime)
 					{
-						if ((int)currWeapon.type < (int)Weapons.LaserA) //If the weapon is of Bullet type
+						if (currGuns[i].type == GunData.GunTypes.Bullet) //If the gun is of Bullet type
 						{
 							//fire a new bullet from this gun and, by default, make it child of the Ship (for those that must remain children of their ships)
 							Bullet bullet = Instantiate(currGuns[i].bulletPrefab, currGuns[i].cannon.position,
@@ -244,18 +232,43 @@ public class PlayerShipShooter : MonoBehaviour
 	}
 
 
-	void ResetFireTimes(bool onlyFireStartTimes)
+	//void ResetFireTimes(bool onlyFireStartTimes)
+	//{
+	//	for (int i = 0; i < currGuns.Length; i++)
+	//	{
+	//		if (onlyFireStartTimes)
+	//		{
+	//			currGuns[i].FireStartTime = Mathf.Max(Time.time, currGuns[i].NextFireTime + currGuns[i].fireDelay);
+	//		}
+	//		else
+	//		{
+	//			currGuns[i].NextFireTime = currGuns[i].FireStartTime = Time.time + currGuns[i].initialDelay;
+	//		}
+	//	}
+	//}
+
+
+	void ResetFireTimes()
 	{
 		for (int i = 0; i < currGuns.Length; i++)
 		{
-			if (onlyFireStartTimes)
-			{
-				currGuns[i].FireStartTime = Mathf.Max(Time.time, currGuns[i].NextFireTime + currGuns[i].fireDelay);
-			}
-			else
+			if (currGuns[i].type == GunData.GunTypes.Laser || currGuns[i].mustResetDelayOnBtnUp)
 			{
 				currGuns[i].NextFireTime = currGuns[i].FireStartTime = Time.time + currGuns[i].initialDelay;
 			}
+			else
+			{
+				currGuns[i].FireStartTime = Mathf.Max(Time.time, currGuns[i].NextFireTime + currGuns[i].fireDelay);
+			}
+		}
+	}
+
+
+	void InitFireTimes()
+	{
+		for (int i = 0; i < currGuns.Length; i++)
+		{
+			currGuns[i].NextFireTime = currGuns[i].FireStartTime = Time.time + currGuns[i].initialDelay;
 		}
 	}
 

@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
 {
 	public string _comment = "Notes...";
 	public Weapons type;
-	public bool isResetOnBtnUp = false;
+	//public bool isResetOnBtnUp = false;
 	public WeaponLeveData[] lvls;
 }
 
@@ -23,9 +23,17 @@ public class WeaponLeveData
 [System.Serializable]
 public class GunData
 {
+	public enum GunTypes
+	{
+		Bullet = 0,
+		Laser = 1
+	}
+
 	public Transform cannon;
-	public float initialDelay;
-	public float fireDelay;
+	public GunTypes type = GunTypes.Bullet;
+	public bool mustResetDelayOnBtnUp = false;
+	public float initialDelay = 0f;
+	public float fireDelay = 0.2f;
 	public float fireDuration = 9999f;
 	public Bullet bulletPrefab;
 	public ShipLaser laserPrefab;
@@ -37,13 +45,13 @@ public class GunData
 
 public enum Weapons
 {
-	BulletA = 0,
-	BulletB = 1,
-	BulletC = 2,
-	BulletD = 3,
-	BulletE = 4,
-	LaserA = 6,
-	LaserB = 7,
-	LaserC = 8
+	Weapon1 = 0,
+	Weapon2 = 1,
+	Weapon3 = 2,
+	Weapon4 = 3,
+	Weapon5 = 4,
+	Weapon6 = 6,
+	Weapon7 = 7,
+	Weapon8 = 8
 }
 

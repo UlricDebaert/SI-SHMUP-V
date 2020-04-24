@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4541486429004337161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4541486429004337159}
+  - component: {fileID: 4541486429004337158}
+  m_Layer: 0
+  m_Name: Trigger EnnemiTest1
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4541486429004337159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541486429004337161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.370689, y: 11.985801, z: 3.3728268}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2012474296903762109}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4541486429004337158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541486429004337161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf3b1039878a7f46a9c7f52d6ba77e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _comment: Can be added to a COMPONENTS TO TRIGGER list
+  componentsToTrigger:
+  - {fileID: 9066507572896436618}
+  - {fileID: 4541486427354532527}
+  dontAutoDisableComponents: 0
+  colorLink2Targets: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  colorTrigger: {r: 0, g: 0.6, b: 0, a: 1}
+--- !u!1 &6109226415458953833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2012474296903762109}
+  m_Layer: 0
+  m_Name: EnnemiTest1SetBase UD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2012474296903762109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6109226415458953833}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.62931, y: -3.985801, z: -3.3728268}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9066507572896436619}
+  - {fileID: 4541486429004337159}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4541486429270395704
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2012474296903762109}
+    m_Modifications:
+    - target: {fileID: 4815523661363206832, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemiTest1 UD
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.370689
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.985801
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.3728268
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa13f36c08e4451468b187d1364c4ea4, type: 3}
+--- !u!4 &9066507572896436619 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4815523661363206835, guid: aa13f36c08e4451468b187d1364c4ea4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541486429270395704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9066507572896436618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4815523661363206834, guid: aa13f36c08e4451468b187d1364c4ea4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541486429270395704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f14abc725d6c04ba16736b1a0f7a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4541486427354532527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2119352727, guid: aa13f36c08e4451468b187d1364c4ea4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541486429270395704}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aba58bb1fc80ca4998563b7dd5b171b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
